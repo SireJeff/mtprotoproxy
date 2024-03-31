@@ -22,7 +22,10 @@ def make_api_call(url):
         return []
 
 def send_strings_as_messages(ips, chat_id):
-    for ip in ips:
+  
+    for ip_with_port in ips:
+        # Extract IP address without port
+        ip = ip_with_port.split(':')[0]
         message = f"tg://proxy?server={ip}&port=33333&secret=eee601e300d8e3fb8bfcec8828f9cf08347777772e636c6f7564666c6172652e636f6d"
         bot.send_message(chat_id, message)
 
